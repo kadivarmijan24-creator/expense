@@ -1,0 +1,24 @@
+{
+  "name": "Kharché - Personal Money Manager",
+  "short_name": "Kharché",
+  "description": "A simple premium offline personal money manager.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f0e8",
+  "theme_color": "#596b52",
+  "orientation": "portrait",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "finance",
+    "productivity"
+  ]
+}

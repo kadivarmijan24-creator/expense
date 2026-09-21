@@ -25,6 +25,23 @@
 
   <title>Kharché</title>
 </head>
+<script>
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Chrome default mini-infobar prevent kari ne prompt save kare che
+    e.preventDefault();
+    deferredPrompt = e;
+
+    // Jo tamare direct prompt show karvo hoy to:
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      }
+      deferredPrompt = null;
+    });
+  });
+</script>
 
 <body>
 

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+                   initial-scale=1,
+                   maximum-scale=1,
+                   user-scalable=no,
+                   viewport-fit=cover">
+
+    <meta name="theme-color" content="#356B59">
+    <meta name="description"
+          content="Daily - Personal expenses, wallet and shopping list">
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Daily — Expenses & Shopping</title>
+</head>
+
+<body>
+
+<!-- ================= ENTRY SCREEN ================= -->
+
+<div id="entryScreen" class="entry-screen">
+
+    <div class="entry-glow glow-one"></div>
+    <div class="entry-glow glow-two"></div>
+
+    <div class="entry-content">
+
+        <div class="app-logo large-logo">
+            <span>₹</span>
+        </div>
+
+        <h1>Daily<span>.</span></h1>
+
+        <p>Spend smart. Live better.</p>
+
+        <div class="loading-line">
+            <div></div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= MAIN APP ================= -->
+
+<div id="mainApp" class="app hidden">
+
+    <!-- HEADER -->
+
+    <header class="top-header">
+
+        <div>
+            <p class="small-label">PERSONAL FINANCE</p>
+            <h1>Daily<span>.</span></h1>
+        </div>
+
+        <button class="header-icon" id="headerAddBtn">
+            +
+        </button>
+
+    </header>
+
+
+    <!-- ================= HOME ================= -->
+
+    <main id="homePage" class="page active">
+
+        <!-- WALLET CARD -->
+
+        <section class="wallet-card">
+
+            <div class="wallet-top">
+
+                <div>
+                    <p>Available balance</p>
+
+                    <h2 id="availableBalance">
+                        ₹0
+                    </h2>
+                </div>
+
+                <div class="wallet-icon">
+                    ₹
+                </div>
+
+            </div>
+
+            <div class="wallet-bottom">
+
+                <div>
+                    <span id="totalAdded">
+                        ₹0
+                    </span>
+                    <small>Total added</small>
+                </div>
+
+                <div>
+                    <span id="totalSpent">
+                        ₹0
+                    </span>
+                    <small>Total spent</small>
+                </div>
+
+            </div>
+
+            <button class="wallet-add-btn"
+                    id="addMoneyBtn">
+                + Add money
+            </button>
+
+        </section>
+
+
+        <!-- TODAY CARD -->
+
+        <section class="hero-card">
+
+            <div class="hero-top">
+
+                <div>
+                    <p>Today's spending</p>
+
+                    <h2 id="todayTotal">
+                        ₹0
+                    </h2>
+                </div>
+
+                <div class="hero-icon">
+                    ₹
+                </div>
+
+            </div>
+
+            <div class="hero-bottom">
+
+                <div>
+                    <span id="todayTransactions">
+                        0
+                    </span>
+                    <small>Transactions</small>
+                </div>
+
+                <div>
+                    <span id="todayShopping">
+                        0
+                    </span>
+                    <small>Shopping</small>
+                </div>
+
+                <div>
+                    <span id="monthTotal">
+                        ₹0
+                    </span>
+                    <small>This month</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <section class="section">
+
+            <div class="section-heading">
+                <h3>Quick actions</h3>
+            </div>
+
+            <div class="quick-grid">
+
+                <button class="quick-card expense-action">
+
+                    <div class="quick-icon">
+                        +
+                    </div>
+
+                    <div>
+                        <strong>Add expense</strong>
+                        <span>Track your spending</span>
+                    </div>
+
+                </button>
+
+
+                <button class="quick-card shopping-action">
+
+                    <div class="quick-icon shopping-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <strong>Shopping list</strong>
+                        <span>Manage your items</span>
+                    </div>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- RECENT EXPENSES -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <h3>Recent expenses</h3>
+
+                <button class="text-button"
+                        data-page="expensesPage">
+                    See all
+                </button>
+
+            </div>
+
+            <div id="recentExpenses"
+                 class="expense-list">
+            </div>
+
+        </section>
+
+
+        <div id="homeEmpty"
+             class="empty-state hidden">
+
+            <div class="empty-icon">
+                ₹
+            </div>
+
+            <h3>No expenses yet</h3>
+
+            <p>
+                Start tracking your daily spending.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= EXPENSES ================= -->
+
+    <main id="expensesPage"
+          class="page">
+
+        <section class="page-heading">
+
+            <div>
+                <p class="small-label">YOUR MONEY</p>
+                <h2>Expenses</h2>
+            </div>
+
+            <button class="round-add expense-action">
+                +
+            </button>
+
+        </section>
+
+
+        <div class="filter-row">
+
+            <button class="filter active"
+                    data-filter="all">
+                All
+            </button>
+
+            <button class="filter"
+                    data-filter="Food">
+                Food
+            </button>
+
+            <button class="filter"
+                    data-filter="Travel">
+                Travel
+            </button>
+
+            <button class="filter"
+                    data-filter="Shopping">
+                Shopping
+            </button>
+
+            <button class="filter"
+                    data-filter="Bills">
+                Bills
+            </button>
+
+            <button class="filter"
+                    data-filter="Other">
+                Other
+            </button>
+
+        </div>
+
+
+        <div id="expensesList"
+             class="expense-list full-list">
+        </div>
+
+
+        <div id="expensesEmpty"
+             class="empty-state">
+
+            <div class="empty-icon">
+                ₹
+            </div>
+
+            <h3>No expenses found</h3>
+
+            <p>
+                Your expenses will appear here.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= SHOPPING ================= -->
+
+    <main id="shoppingPage"
+          class="page">
+
+        <section class="page-heading">
+
+            <div>
+                <p class="small-label">TO BUY</p>
+                <h2>Shopping</h2>
+            </div>
+
+            <button class="round-add shopping-action">
+                +
+            </button>
+
+        </section>
+
+
+        <section class="shopping-summary">
+
+            <div>
+                <span id="shoppingRemaining">0</span>
+                <small>Remaining</small>
+            </div>
+
+            <div>
+                <span id="shoppingCompleted">0</span>
+                <small>Completed</small>
+            </div>
+
+            <div>
+                <span id="shoppingTotal">₹0</span>
+                <small>Estimated</small>
+            </div>
+
+        </section>
+
+
+        <div class="shopping-input-box">
+
+            <input id="quickShoppingInput"
+                   type="text"
+                   placeholder="Add an item...">
+
+            <button id="quickShoppingBtn">
+                +
+            </button>
+
+        </div>
+
+
+        <div id="shoppingList"
+             class="shopping-list">
+        </div>
+
+
+        <div id="shoppingEmpty"
+             class="empty-state">
+
+            <div class="empty-icon">
+                ✓
+            </div>
+
+            <h3>Your list is empty</h3>
+
+            <p>
+                Add something you need to buy.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= INSIGHTS ================= -->
+
+    <main id="insightsPage"
+          class="page">
+
+        <section class="page-heading">
+
+            <div>
+                <p class="small-label">OVERVIEW</p>
+                <h2>Insights</h2>
+            </div>
+
+        </section>
+
+
+        <section class="insight-main-card">
+
+            <p>This month's spending</p>
+
+            <h2 id="insightMonthTotal">
+                ₹0
+            </h2>
+
+            <span>
+                Based on your recorded expenses
+            </span>
+
+        </section>
+
+
+        <section class="section">
+
+            <div class="section-heading">
+                <h3>By category</h3>
+            </div>
+
+            <div id="categoryStats"
+                 class="category-stats">
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= BOTTOM NAV ================= -->
+
+    <nav class="bottom-nav">
+
+        <button class="nav-item active"
+                data-page="homePage">
+
+            <span>⌂</span>
+            <small>Home</small>
+
+        </button>
+
+
+        <button class="nav-item"
+                data-page="expensesPage">
+
+            <span>₹</span>
+            <small>Expenses</small>
+
+        </button>
+
+
+        <button class="nav-item"
+                data-page="shoppingPage">
+
+            <span>✓</span>
+            <small>Shopping</small>
+
+        </button>
+
+
+        <button class="nav-item"
+                data-page="insightsPage">
+
+            <span>◔</span>
+            <small>Insights</small>
+
+        </button>
+
+    </nav>
+
+</div>
+
+
+<!-- ================= EXPENSE MODAL ================= -->
+
+<div id="expenseModal"
+     class="modal">
+
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-box">
+
+        <div class="modal-handle"></div>
+
+        <div class="modal-header">
+
+            <div>
+                <p class="small-label">NEW ENTRY</p>
+                <h2>Add expense</h2>
+            </div>
+
+            <button class="close-modal">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="expenseForm">
+
+            <label>
+                Amount
+            </label>
+
+            <div class="amount-input">
+
+                <span>₹</span>
+
+                <input id="expenseAmount"
+                       type="number"
+                       min="0"
+                       step="0.01"
+                       placeholder="0"
+                       required>
+
+            </div>
+
+
+            <label>
+                What did you spend on?
+            </label>
+
+            <input id="expenseTitle"
+                   type="text"
+                   placeholder="e.g. Lunch"
+                   maxlength="60"
+                   required>
+
+
+            <label>
+                Category
+            </label>
+
+            <div class="category-buttons">
+
+                <button type="button"
+                        class="category-btn active"
+                        data-category="Food">
+                    🍴 Food
+                </button>
+
+                <button type="button"
+                        class="category-btn"
+                        data-category="Travel">
+                    🚗 Travel
+                </button>
+
+                <button type="button"
+                        class="category-btn"
+                        data-category="Shopping">
+                    🛍 Shopping
+                </button>
+
+                <button type="button"
+                        class="category-btn"
+                        data-category="Bills">
+                    ◈ Bills
+                </button>
+
+                <button type="button"
+                        class="category-btn"
+                        data-category="Other">
+                    • Other
+                </button>
+
+            </div>
+
+
+            <label>
+                Date
+            </label>
+
+            <input id="expenseDate"
+                   type="date"
+                   required>
+
+
+            <button type="submit"
+                    class="primary-button">
+
+                Save expense
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= ADD MONEY MODAL ================= -->
+
+<div id="moneyModal"
+     class="modal">
+
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-box">
+
+        <div class="modal-handle"></div>
+
+        <div class="modal-header">
+
+            <div>
+                <p class="small-label">YOUR WALLET</p>
+                <h2>Add money</h2>
+            </div>
+
+            <button class="close-modal">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="moneyForm">
+
+            <label>
+                Amount
+            </label>
+
+            <div class="amount-input">
+
+                <span>₹</span>
+
+                <input id="moneyAmount"
+                       type="number"
+                       min="1"
+                       step="0.01"
+                       placeholder="0"
+                       required>
+
+            </div>
+
+
+            <label>
+                Note
+            </label>
+
+            <input id="moneyNote"
+                   type="text"
+                   maxlength="60"
+                   placeholder="e.g. Salary, Cash, Savings">
+
+
+            <button type="submit"
+                    class="primary-button">
+
+                Add money
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= SHOPPING MODAL ================= -->
+
+<div id="shoppingModal"
+     class="modal">
+
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-box">
+
+        <div class="modal-handle"></div>
+
+        <div class="modal-header">
+
+            <div>
+                <p class="small-label">NEW ITEM</p>
+                <h2>Add shopping item</h2>
+            </div>
+
+            <button class="close-modal">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="shoppingForm">
+
+            <label>
+                Item
+            </label>
+
+            <input id="shoppingName"
+                   type="text"
+                   placeholder="e.g. Milk"
+                   maxlength="80"
+                   required>
+
+
+            <label>
+                Estimated price
+            </label>
+
+            <div class="amount-input">
+
+                <span>₹</span>
+
+                <input id="shoppingPrice"
+                       type="number"
+                       min="0"
+                       step="0.01"
+                       placeholder="0">
+
+            </div>
+
+
+            <button type="submit"
+                    class="primary-button">
+
+                Add to list
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div id="toast"
+     class="toast">
+    Saved successfully
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>

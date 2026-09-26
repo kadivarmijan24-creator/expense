@@ -1,39 +1,125 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
   <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#243328" />
-      <stop offset="50%" stop-color="#3f5039" />
-      <stop offset="100%" stop-color="#596b52" />
+    <!-- Background Outer Glow Shadow -->
+    <filter id="appShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#D90429" flood-opacity="0.32" />
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.15" />
+    </filter>
+
+    <!-- Mercury Red Smooth Gradient -->
+    <linearGradient id="mercuryRedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF385C" />
+      <stop offset="42%" stop-color="#D90429" />
+      <stop offset="100%" stop-color="#800012" />
     </linearGradient>
-    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f5e0b7" />
-      <stop offset="100%" stop-color="#c49b62" />
+
+    <!-- Pure Metallic Gold Gradient -->
+    <linearGradient id="pureGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF3A8" />
+      <stop offset="35%" stop-color="#FFD700" />
+      <stop offset="70%" stop-color="#E5B80B" />
+      <stop offset="100%" stop-color="#996515" />
     </linearGradient>
-    <filter id="dropShadow" x="-10%" y="-10%" width="130%" height="130%">
-      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.35" />
+
+    <!-- Pure Silver Metallic Ring Gradient -->
+    <linearGradient id="pureSilverGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A6B1BD" />
+      <stop offset="30%" stop-color="#E2E8F0" />
+      <stop offset="70%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#CBD5E1" />
+    </linearGradient>
+
+    <!-- Rupee Gold Depth & Bevel Filter -->
+    <filter id="goldDepth" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#4A000A" flood-opacity="0.5" />
     </filter>
   </defs>
 
-  <!-- Squircle App Background -->
-  <rect x="32" y="32" width="448" height="448" rx="112" fill="url(#bgGrad)" filter="url(#dropShadow)" />
+  <!-- Base Smooth Squircle (Mercury Red Gradient) -->
+  <rect 
+    x="32" 
+    y="32" 
+    width="448" 
+    height="448" 
+    rx="108" 
+    fill="url(#mercuryRedGrad)" 
+    filter="url(#appShadow)" 
+  />
 
-  <!-- Inner Soft Glow Outline -->
-  <rect x="34" y="34" width="444" height="444" rx="110" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="3" />
+  <!-- Pure Silver Inner Accent Border -->
+  <rect 
+    x="34" 
+    y="34" 
+    width="444" 
+    height="444" 
+    rx="106" 
+    fill="none" 
+    stroke="url(#pureSilverGrad)" 
+    stroke-width="3" 
+    opacity="0.8" 
+  />
 
-  <!-- Abstract Finance / Wallet Shield Motif -->
-  <g transform="translate(116, 116)">
-    <!-- Base geometric wallet shield -->
-    <path d="M40 70 C40 45, 60 25, 85 25 L215 25 C235 25, 250 40, 250 60 L250 200 C250 225, 230 245, 205 245 L75 245 C50 245, 40 230, 40 210 Z" fill="rgba(255,255,255,0.06)" />
-    
-    <!-- Primary Growth Arc -->
-    <path d="M60 190 C85 130, 140 85, 210 75" fill="none" stroke="url(#goldGrad)" stroke-width="26" stroke-linecap="round" />
-    
-    <!-- Rupee / K hybrid accent stroke -->
-    <path d="M125 55 L125 215" fill="none" stroke="#ffffff" stroke-width="22" stroke-linecap="round" />
-    <path d="M125 135 L200 65" fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round" />
-    <path d="M150 115 L215 195" fill="none" stroke="#ffffff" stroke-width="22" stroke-linecap="round" />
+  <!-- Top Curved Glass Reflection Highlight -->
+  <path 
+    d="M 32 140 C 32 80, 80 32, 140 32 L 372 32 C 432 32, 480 80, 480 140 C 380 180, 130 180, 32 140 Z" 
+    fill="#FFFFFF" 
+    opacity="0.12" 
+  />
 
-    <!-- Coin / Accent Dot -->
-    <circle cx="215" cy="65" r="16" fill="url(#goldGrad)" />
+  <!-- Center Pure Silver Soft Radial Ring -->
+  <circle 
+    cx="256" 
+    cy="256" 
+    r="160" 
+    fill="none" 
+    stroke="url(#pureSilverGrad)" 
+    stroke-width="5" 
+    opacity="0.35" 
+  />
+
+  <!-- Center Inner Ring (Pure Gold) -->
+  <circle 
+    cx="256" 
+    cy="256" 
+    r="142" 
+    fill="rgba(0, 0, 0, 0.12)" 
+    stroke="url(#pureGoldGrad)" 
+    stroke-width="3" 
+    opacity="0.6" 
+  />
+
+  <!-- Pure Metallic Gold Rupee Symbol (₹) -->
+  <g filter="url(#goldDepth)" fill="url(#pureGoldGrad)">
+    <!-- Top Horizontal Bar -->
+    <rect x="176" y="162" width="160" height="24" rx="12" />
+
+    <!-- Second Horizontal Bar -->
+    <rect x="176" y="212" width="160" height="24" rx="12" />
+
+    <!-- Upper Spine & Curve -->
+    <path d="M 216 162 
+             L 216 280 
+             C 278 280, 304 252, 304 224 
+             C 304 198, 280 178, 252 178
+             L 252 162
+             C 292 162, 328 190, 328 226 
+             C 328 266, 288 302, 230 304 
+             L 216 304 
+             L 216 162 Z" />
+
+    <!-- Lower Diagonal Leg -->
+    <path d="M 216 290 
+             L 304 388 
+             C 310 394, 322 394, 328 388 
+             L 336 380 
+             C 342 374, 342 362, 334 354 
+             L 256 266 
+             L 216 290 Z" />
+
+    <!-- Left Main Vertical Line -->
+    <rect x="198" y="162" width="24" height="142" rx="6" />
   </g>
+
+  <!-- Bottom Subtle Light Reflection -->
+  <ellipse cx="256" cy="460" rx="140" ry="12" fill="url(#pureSilverGrad)" opacity="0.18" />
 </svg>
